@@ -29,8 +29,12 @@ def get_first_armature(obj):
     for i in obj.modifiers:
         if i.type == 'ARMATURE':
             return i    
-
+#---------------------------------------------------------
+#需要填入自己的参数
 folder_path = "D:\\尻尻文件\\(魔)コハル\\(魔)コハル\\表情\\"
+scale = 0.08
+#---------------------------------------------------------
+
 all_files = get_all_files_in_folder(folder_path)
 arm = bpy.context.active_object
 
@@ -47,7 +51,7 @@ for path in all_files:
     #导入vpd姿态
     print(path)
     print(name)
-    bpy.ops.mmd_tools.import_vpd(filepath=path, files=[{"name":name, "name":name}], directory=folder_path)
+    bpy.ops.mmd_tools.import_vpd(filepath=path, files=[{"name":name, "name":name}], directory=folder_path, scale=scale)
     #从mesh的骨架修改器上应用形态键
     bpy.context.active_object.select_set(False)
     bpy.context.view_layer.objects.active = mesh
